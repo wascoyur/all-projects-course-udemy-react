@@ -1,6 +1,6 @@
 import styles from "../styles/Home.module.css";
 
-export const Destructing = () => {
+const Destructing = () => {
   const dict = {
     duck: "dick",
     dog: "wuff",
@@ -27,3 +27,5 @@ export const Destructing = () => {
     </div>
   );
 };
+
+export default Destructing;
