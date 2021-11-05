@@ -94,7 +94,7 @@
 .card:hover,
 .card:focus,
 .card:active {
-  background-color: rgb(243, 230, 114);
+  background-color: rgb(204, 204, 204);
   border-color: #83878b;
 }
 
@@ -113,7 +113,9 @@
   height: 1em;
   margin-left: 0.5rem;
 }
-
+.container input {
+  margin: 1rem;
+}
 @media (max-width: 600px) {
   .grid {
     width: 100%;

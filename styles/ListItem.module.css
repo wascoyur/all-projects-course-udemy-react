@@ -1,17 +1,26 @@
 .body {
-  border: #b5d1f1 2rem solid;
+  border: #b5d1f1 1rem solid;
   border-radius: 5rem !important;
   /*   padding: 5rem 0 1rem;
  */
-  margin: 2rem 0 2rem 0;
 }
 .high {
-  background-color: rgb(236, 185, 185);
-  font-size: 1.1rem;
+  color: rgb(243, 8, 8);
+  /* font-size: 1.1rem; */
 }
 .medium {
-  background-color: rgb(187, 187, 43);
+  color: rgb(43, 199, 43);
 }
 .normal {
-  color: green;
+  color: rgb(121, 124, 121);
+}
+.wrapitem {
+  margin: 0.1rem 0 0.1rem 0;
+  border: 1px solid;
+  border-radius: 5rem;
+  padding: 0.2rem;
+}
+.wrapitem:hover {
+  background-color: rgb(172, 171, 171);
+  /* font-size: 1.5rem; */
 }
