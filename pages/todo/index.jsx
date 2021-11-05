@@ -1,15 +1,10 @@
 import React, { useEffect } from "react";
 import styles from "@/styles/Home.module.css";
 import { Timer } from "../../components/Timer";
+import { SearchPanel } from "../../components/todo/SearchPanel";
+import { AppHeader } from "../../components/todo/AppHeader";
+import { TodoList } from "../../components/todo/TodoList";
 
-const AppHeader = <div className={styles.title}>ТуДушка</div>;
-const SearchPanel = <input placeholder="введи чего-нибудь" />;
-const TodoList = (
-  <ul className={styles.code}>
-    <li>Номер один</li>
-    <li>Номер два</li>
-  </ul>
-);
 const Todo = () => {
   return (
     <div className={styles.container}>

@@ -1,0 +1,17 @@
+.body {
+  border: #b5d1f1 2rem solid;
+  border-radius: 5rem !important;
+  /*   padding: 5rem 0 1rem;
+ */
+  margin: 2rem 0 2rem 0;
+}
+.high {
+  background-color: rgb(236, 185, 185);
+  font-size: 1.1rem;
+}
+.medium {
+  background-color: rgb(187, 187, 43);
+}
+.normal {
+  color: green;
+}
