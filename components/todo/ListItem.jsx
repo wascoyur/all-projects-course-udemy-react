@@ -16,6 +16,12 @@ export const ListItem = ({ nameItem, important = 3 }) => {
     >
       {" "}
       {nameItem}
+      <button className="btn btn-outline-danger btn-sm float-end ms-1">
+        <i className="bi bi-trash"></i>
+      </button>
+      <button className="btn btn-outline-success btn-sm float-end ms-1">
+        <i className="bi bi-exclamation-lg"></i>
+      </button>
     </div>
   );
 };

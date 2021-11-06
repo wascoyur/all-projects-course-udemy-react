@@ -1,12 +1,5 @@
-.body {
-  border: #b5d1f1 1rem solid;
-  border-radius: 5rem !important;
-  /*   padding: 5rem 0 1rem;
- */
-}
 .high {
   color: rgb(243, 8, 8);
-  /* font-size: 1.1rem; */
 }
 .medium {
   color: rgb(43, 199, 43);
@@ -14,13 +7,7 @@
 .normal {
   color: rgb(121, 124, 121);
 }
-.wrapitem {
-  margin: 0.1rem 0 0.1rem 0;
-  border: 1px solid;
-  border-radius: 5rem;
-  padding: 0.2rem;
-}
+
 .wrapitem:hover {
   background-color: rgb(172, 171, 171);
-  /* font-size: 1.5rem; */
 }

@@ -4,6 +4,7 @@ import { Timer } from "../../components/Timer";
 import { SearchPanel } from "../../components/todo/SearchPanel";
 import { AppHeader } from "../../components/todo/AppHeader";
 import TodoList from "../../components/todo/TodoList";
+import Counter from "@/components/todo/Counter";
 
 const Todo = () => {
   const data = [
@@ -18,7 +19,9 @@ const Todo = () => {
       {AppHeader}
       <div className={styles.main}>
         <Timer />
+        <Counter />
         {SearchPanel}
+
         <TodoList props={data} />
       </div>
     </div>
