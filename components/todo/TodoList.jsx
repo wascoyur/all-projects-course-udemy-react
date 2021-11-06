@@ -7,7 +7,7 @@ const TodoList = ({ props }) => {
     .sort((a, b) => a.important - b.important)
     .map((i, ind) => {
       return (
-        <div key={ind} className={(styles.todoList, "list-group-item")}>
+        <div key={i.id} className={(styles.todoList, "list-group-item")}>
           <ListItem item={i} />
         </div>
       );
