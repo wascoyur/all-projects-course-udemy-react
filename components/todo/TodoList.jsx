@@ -8,11 +8,11 @@ const TodoList = ({ props }) => {
     .map((i, ind) => {
       return (
         <div key={ind} className={(styles.todoList, "list-group-item")}>
-          <ListItem nameItem={i.name} important={i.important} />
+          <ListItem item={i} />
         </div>
       );
     });
-  // console.log("list", list);
+  // console.log("props", props);
 
   return <div className="list-group">{list}</div>;
 };

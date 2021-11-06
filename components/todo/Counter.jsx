@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
-import { Badge } from "react-bootstrap";
+import { Badge, Row } from "react-bootstrap";
 
 const Counter = () => {
   return (
-    <Fragment>
+    <Row>
       <Badge bg="secondary" className="m-2">
         Задач всего 55{" "}
       </Badge>
@@ -13,7 +13,7 @@ const Counter = () => {
       <Badge bg="warning" className="m-2">
         Задач активных 5
       </Badge>
-    </Fragment>
+    </Row>
   );
 };
 
