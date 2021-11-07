@@ -2,13 +2,14 @@ import React from "react";
 import styles from "@/styles/ToDoList.module.css";
 import { ListItem } from "./ListItem";
 
-const TodoList = ({ props, changeStatus }) => {
+const TodoList = ({ props, changeStatus ,delTask}) => {
+  
   const list = props
     .sort((a, b) => a.important - b.important)
     .map((i) => {
       return (
         <div key={i.id} className={(styles.todoList, "list-group-item")}>
-          <ListItem item={i} changeStatus={changeStatus} />
+          <ListItem item={i} changeStatus={changeStatus} rmTask={delTask} />
         </div>
       );
     });
