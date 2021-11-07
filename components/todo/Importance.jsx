@@ -21,9 +21,15 @@ const Importance = ({ important }) => {
         {importance}
       </Dropdown.Toggle>
       <Dropdown.Menu style={{ margin: 0 }}>
-        <Dropdown.Item eventKey="1">1</Dropdown.Item>
-        <Dropdown.Item eventKey="2">2</Dropdown.Item>
-        <Dropdown.Item eventKey="3">3</Dropdown.Item>
+        <Dropdown.Item eventKey="1" className="text-info">
+          1
+        </Dropdown.Item>
+        <Dropdown.Item eventKey="2" className="text-info">
+          2
+        </Dropdown.Item>
+        <Dropdown.Item eventKey="3" className="text-info">
+          3
+        </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );

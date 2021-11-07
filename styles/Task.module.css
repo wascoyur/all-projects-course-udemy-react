@@ -1,0 +1,18 @@
+.high {
+  color: rgb(243, 8, 8);
+}
+.medium {
+  color: rgb(43, 199, 43);
+}
+.normal {
+  color: rgb(121, 124, 121);
+}
+.active {
+  background-color: bisque;
+}
+.done {
+  text-decoration: line-through;
+}
+.wrapitem:hover {
+  background-color: rgb(172, 171, 171);
+}
