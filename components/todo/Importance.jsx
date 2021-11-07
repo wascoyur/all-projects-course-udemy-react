@@ -4,18 +4,21 @@ import styles from "@/styles/Importance.module.css";
 import { Dropdown, DropdownProps } from "react-bootstrap";
 
 const Importance = ({ important }) => {
-  const [importance, setImportance] = useState(false);
-  const handleChange = (evtKey, e) => {
-    console.log(evtKey, e);
+  const [importance, setImportance] = useState(important);
+
+  const handleChange = (evtKey) => {
+    // e.peventDefault();
+    console.log(evtKey);
   };
   return (
-    <Dropdown className="float-end" id="dropdown-outline" autoClose>
-      <Dropdown.Toggle
-        className="bg-light text-info"
-        id="dropdown"
-        onSelect={handleChange}
-      >
-        {important}
+    <Dropdown
+      className="float-end"
+      id="dropdown-outline"
+      /* autoClose */
+      onSelect={(e) => setImportance(e)}
+    >
+      <Dropdown.Toggle className="bg-light text-info" id="dropdown">
+        {importance}
       </Dropdown.Toggle>
       <Dropdown.Menu style={{ margin: 0 }}>
         <Dropdown.Item eventKey="1">1</Dropdown.Item>
