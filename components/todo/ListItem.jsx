@@ -1,36 +1,30 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import styles from "@/styles/ListItem.module.css";
-import { Button } from "react-bootstrap";
+import { Badge, Button, Dropdown, DropdownButton } from "react-bootstrap";
 import StatusViewer from "./status";
+import Importance from "./Importance";
 
 export const ListItem = ({ item }) => {
-  const { id, name, important, status, changeStatus } = item;
+  const { id, name, important, status } = item;
 
-  const [statusT, setStatusT] = useState(styles.normal);
+  const [statusT, setStatusT] = useState("");
 
   const classNames = statusT;
 
   const setActive = () => {
-    setStatusT(styles.done);
+    // setStatusT(styles.done);
   };
+  const importancePicker = () => {};
 
-  
   return (
     <div className={classNames}>
-      <span
-        onClick={() => {
-          changeStatus(id);
-        }}
-      >
-        {name}/{status}
-      </span>
+      <span onClick={() => setStatusT(styles.done)}>{name}</span>
       <Button variant="outline-danger" className="float-end ms-1">
         <i className="bi bi-trash"></i>
       </Button>
-      <Button variant="outline-success" className="float-end ms-1">
-        <i className="bi bi-exclamation"></i>
-      </Button>
+
       <StatusViewer statusTask={status} />
+      <Importance important={important} />
     </div>
   );
 };

@@ -12,7 +12,7 @@ const StatusViewer = ({ statusTask }) => {
     }
     return result;
   }
-  console.log(statusTask);
+  // console.log(statusTask);
   return (
     <Button variant="outline-info" className="ms-1 float-end">
       <i className={iconStatus(statusTask)} />

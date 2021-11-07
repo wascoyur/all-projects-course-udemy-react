@@ -39,7 +39,7 @@ const Todo = ({ todos }) => {
   ];
 
   return (
-    <div>
+    <div className="container-fluid">
       {AppHeader}
       <div className={styles.main}>
         <Timer />
@@ -54,11 +54,11 @@ const Todo = ({ todos }) => {
 
 export default Todo;
 
-export async function getServerSideProps(context) {
-  const res = await fetch("http://localhost:3000/api/hello");
-  const data = res.json();
-
-  return {
-    props: {}, // will be passed to the page component as props
-  };
-}
+// export async function getServerSideProps(context) {
+//   const res = await fetch("http://localhost:3000/api/hello");
+//   const data = res.json();
+//
+//   return {
+//     props: {}, // will be passed to the page component as props
+//   };
+// }

@@ -1,0 +1,10 @@
+.dropdownContent {
+  display: inline-block;
+}
+.hide {
+  display: none;
+}
+.show .dropdown-menu {
+  display: block;
+  position: absolute;
+}
