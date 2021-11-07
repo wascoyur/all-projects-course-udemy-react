@@ -8,11 +8,19 @@
   color: rgb(121, 124, 121);
 }
 .active {
-  background-color: bisque;
+  font-weight: bold;
+  color: steelblue;
 }
 .done {
   text-decoration: line-through;
 }
+.info {
+  color: aqua;
+}
 .wrapitem:hover {
-  background-color: rgb(172, 171, 171);
+  background-color: rgb(231, 222, 222);
+}
+
+.suspend {
+  color: rgb(123, 126, 123);
 }

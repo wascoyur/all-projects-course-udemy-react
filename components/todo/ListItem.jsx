@@ -5,7 +5,7 @@ import StatusViewer from "./status";
 import Importance from "./Importance";
 import Task from "./Task";
 
-export const ListItem = ({ item }) => {
+export const ListItem = ({ item, rmTask }) => {
   const { id, name, important, status } = item;
 
   const importancePicker = () => {};
@@ -14,7 +14,11 @@ export const ListItem = ({ item }) => {
     <div>
       <Task item={item} />
 
-      <Button variant="outline-danger" className="float-end ms-1">
+      <Button
+        variant="outline-danger"
+        className="float-end ms-1"
+        onClick={() => rmTask(id, name)}
+      >
         <i className="bi bi-trash"></i>
       </Button>
 

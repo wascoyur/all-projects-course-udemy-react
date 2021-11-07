@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/Home.module.css";
 import { Timer } from "../../components/Timer";
 import { SearchPanel } from "../../components/todo/SearchPanel";
@@ -11,7 +11,7 @@ const Todo = ({ todos }) => {
     const singleTodo = data.filter((atr) => atr.id === id);
     console.log("singleTodo==>", singleTodo);
   };
-  const getData = async () => {
+  let getData = async () => {
     const data = fetch();
   };
   // const data = todos.data;
@@ -37,6 +37,13 @@ const Todo = ({ todos }) => {
       status: "info",
     },
   ];
+  const [tasks, setTasks] = useState(data);
+
+  const onDeleted = (id, n) => {
+    const task = tasks.filter((t) => t.id !== id);
+    setTasks(task);
+    console.log("newData:", tasks);
+  };
 
   return (
     <div className="container-fluid">
@@ -46,7 +53,11 @@ const Todo = ({ todos }) => {
         <Counter />
         {SearchPanel}
 
-        <TodoList props={data} changeStatus={changeStatus} />
+        <TodoList
+          props={tasks}
+          changeStatus={changeStatus}
+          delTask={onDeleted}
+        />
       </div>
     </div>
   );
