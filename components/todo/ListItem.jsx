@@ -5,14 +5,14 @@ import StatusViewer from "./status";
 import Importance from "./Importance";
 import Task from "./Task";
 
-export const ListItem = ({ item, rmTask }) => {
+export const ListItem = ({ item, rmTask, changeStatus }) => {
   const { id, name, important, status } = item;
 
   const importancePicker = () => {};
 
   return (
     <div>
-      <Task item={item} />
+      <Task item={item} changeStatus={changeStatus} />
 
       <Button
         variant="outline-danger"

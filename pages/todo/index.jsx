@@ -8,21 +8,24 @@ import Counter from "@/components/todo/Counter";
 import { Col, Row } from "react-bootstrap";
 
 const Todo = ({ todos }) => {
-  const changeStatus = (id) => {
-    const singleTodo = data.filter((atr) => atr.id === id);
-    // console.log("singleTodo==>", singleTodo);
+  const changeStatus = (id, newStatus) => {
+    const singleTodo = tasks.filter((atr) => atr.id === id);
+    singleTodo.status = newStatus;
+    onDeleted(id);
+    setTasks((tasks) => [...tasks, ...singleTodo]);
+    console.log("tasks==>", tasks);
   };
   let getData = async () => {
     const data = fetch();
   };
   // const data = todos.data;
   const data = [
-    { id: 1, name: "Выучить реакт", important: 2, status: "active" },
-    { id: 7, name: "Выучить реакт", important: 2, status: "active" },
+    { id: 1, name: "Do it", important: 2, status: "active" },
+    { id: 7, name: "Выучить next", important: 2, status: "active" },
     { id: 2, name: "Получить оффер", important: 1, status: "suspend" },
     {
       id: 3,
-      name: "Cредней важности пункт списка",
+      name: "Изначально выполнена",
       important: 2,
       status: "done",
     },

@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/Task.module.css";
 import { Dropdown } from "react-bootstrap";
 
-const Task = ({ item}) => {
+const Task = ({ item, changeStatus }) => {
   const statuses = ["active", "suspend", "done", "info"];
   const { id, name, important, status } = item;
   const [statusT, setStatusT] = useState("");
 
+  useEffect(() => {
+    changeStatusTask(status);
+  }, []);
+
   const changeStatusTask = (s) => {
+    changeStatus(id, s);
     const classNames = statusT;
 
     switch (s) {
@@ -45,9 +50,13 @@ const Task = ({ item}) => {
         </span>
       </Dropdown.Toggle>
       <Dropdown.Menu style={{ margin: 0 }}>
-        {statuses.map((s) => (
-          <Dropdown.Item eventKey={s} className="text-dark" key={s}>
-            {s}
+        {statuses.map((statusList) => (
+          <Dropdown.Item
+            eventKey={statusList}
+            className="text-dark"
+            key={statusList}
+          >
+            {statusList}
           </Dropdown.Item>
         ))}
       </Dropdown.Menu>
