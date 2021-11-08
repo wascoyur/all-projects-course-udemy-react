@@ -13,6 +13,7 @@ const Task = ({ item, changeStatus }) => {
 
   const changeStatusTask = (s) => {
     changeStatus(id, s);
+    console.log("id, s", id, s);
     const classNames = statusT;
 
     switch (s) {

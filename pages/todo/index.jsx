@@ -9,11 +9,13 @@ import { Col, Row } from "react-bootstrap";
 
 const Todo = ({ todos }) => {
   const changeStatus = (id, newStatus) => {
-    const singleTodo = tasks.filter((atr) => atr.id === id);
-    singleTodo.status = newStatus;
-    onDeleted(id);
-    setTasks((tasks) => [...tasks, ...singleTodo]);
-    console.log("tasks==>", tasks);
+    const newArray = tasks.map((task) => {
+      if (task.id === id) {
+        task.status = newStatus;
+      }
+      return task;
+    });
+    // console.log("tasks==>", newArray);
   };
   let getData = async () => {
     const data = fetch();
@@ -53,7 +55,6 @@ const Todo = ({ todos }) => {
   const onDeleted = (id, n) => {
     const task = tasks.filter((t) => t.id !== id);
     setTasks(task);
-    console.log("newData:", tasks);
   };
 
   return (
