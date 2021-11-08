@@ -5,6 +5,7 @@ import { SearchPanel } from "../../components/todo/SearchPanel";
 import { AppHeader } from "../../components/todo/AppHeader";
 import TodoList from "../../components/todo/TodoList";
 import Counter from "@/components/todo/Counter";
+import { Col, Row } from "react-bootstrap";
 
 const Todo = ({ todos }) => {
   const changeStatus = (id) => {
@@ -46,20 +47,28 @@ const Todo = ({ todos }) => {
   };
 
   return (
-    <div className="container-fluid">
+    <Row className="container">
       {AppHeader}
       <div className={styles.main}>
-        <Timer />
-        <Counter />
-        {SearchPanel}
+        <Row>
+          <Col>
+            <Timer />
+          </Col>
+          <Col>
+            <Counter />
+          </Col>
+        </Row>
 
-        <TodoList
-          props={tasks}
-          changeStatus={changeStatus}
-          delTask={onDeleted}
-        />
+        {SearchPanel}
+        <Row>
+          <TodoList
+            props={tasks}
+            changeStatus={changeStatus}
+            delTask={onDeleted}
+          />
+        </Row>
       </div>
-    </div>
+    </Row>
   );
 };
 
