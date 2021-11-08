@@ -10,7 +10,7 @@ import { Col, Row } from "react-bootstrap";
 const Todo = ({ todos }) => {
   const changeStatus = (id) => {
     const singleTodo = data.filter((atr) => atr.id === id);
-    console.log("singleTodo==>", singleTodo);
+    // console.log("singleTodo==>", singleTodo);
   };
   let getData = async () => {
     const data = fetch();
@@ -18,9 +18,16 @@ const Todo = ({ todos }) => {
   // const data = todos.data;
   const data = [
     { id: 1, name: "Выучить реакт", important: 2, status: "active" },
+    { id: 7, name: "Выучить реакт", important: 2, status: "active" },
     { id: 2, name: "Получить оффер", important: 1, status: "suspend" },
     {
       id: 3,
+      name: "Cредней важности пункт списка",
+      important: 2,
+      status: "done",
+    },
+    {
+      id: 6,
       name: "Cредней важности пункт списка",
       important: 2,
       status: "done",
@@ -55,7 +62,7 @@ const Todo = ({ todos }) => {
             <Timer />
           </Col>
           <Col>
-            <Counter />
+            <Counter tasks={tasks} />
           </Col>
         </Row>
 
