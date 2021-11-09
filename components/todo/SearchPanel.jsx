@@ -1,7 +1,24 @@
-import React, { Fragment } from "react";
-import { Col, Container, Row, Button, ButtonGroup } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Row, Button, ButtonGroup, Badge } from "react-bootstrap";
 
-const SearchPanel = ({tasks}) => {
+const SearchPanel = ({ tasks }) => {
+  const [allTasks, setAllTasks] = useState(tasks.length);
+  const [donesTask, setDonesTask] = useState(0);
+  const [activeTask, setActiveTask] = useState(0);
+
+  const calcDoneTask = (all) => {
+    return all.filter((t) => t.status === "done").length;
+  };
+  const calcActiveTask = (all) =>
+    all.filter((t) => t.status === "active").length;
+
+  const calcImportantTask = (all) => all.filter((t) => t.important < 2).length;
+  useEffect(() => {
+    setAllTasks(tasks.length);
+    setDonesTask(calcDoneTask(tasks));
+    setActiveTask(calcActiveTask(tasks));
+  }, [allTasks, tasks]);
+
   return (
     <Row>
       <Row className="p-3">
@@ -13,9 +30,24 @@ const SearchPanel = ({tasks}) => {
       </Row>
       <Row>
         <ButtonGroup className="m-2 p-2">
-          <Button variant="outline-secondary">Все</Button>
-          <Button variant="outline-secondary">Активные</Button>
-          <Button variant="outline-secondary">Выполнены</Button>
+          <Button variant="outline-secondary">
+            Все
+            <Badge bg="secondary" className="top-0 position-absolute ml-1">
+              {allTasks}
+            </Badge>
+          </Button>
+          <Button variant="outline-secondary">
+            Активные
+            <Badge bg="primary" className="top-0 position-absolute ml-1">
+              {activeTask}
+            </Badge>
+          </Button>
+          <Button variant="outline-secondary">
+            Выполнены
+            <Badge bg="dark" className="top-0 position-absolute ml-1">
+              {donesTask}
+            </Badge>
+          </Button>
         </ButtonGroup>
       </Row>
     </Row>

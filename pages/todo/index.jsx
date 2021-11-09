@@ -72,8 +72,8 @@ const Todo = ({ todos }) => {
 
   return (
     <div className="container">
-      <Row>{AppHeader}</Row>
-      <Row className="justify-content-md-center">
+      <Row className="m-2">{AppHeader}</Row>
+      <Row className="m-2">
         <Row xs lg="2">
           <Col xs lg="3">
             <Timer />
@@ -82,9 +82,9 @@ const Todo = ({ todos }) => {
             <Counter tasks={tasks} />
           </Col>
         </Row>
-        <SearchPanel />
+        <SearchPanel tasks={tasks} />
 
-        <Row>
+        <Row className="m-2">
           <TodoList
             props={tasks}
             changeStatus={changeStatus}
