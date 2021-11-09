@@ -9,11 +9,11 @@ const Task = ({ item, changeStatus }) => {
 
   useEffect(() => {
     changeStatusTask(status);
-  }, []);
+  }, [item]);
 
   const changeStatusTask = (s) => {
     changeStatus(id, s);
-    console.log("id, s", id, s);
+    // console.log("id, s", id, s);
     const classNames = statusT;
 
     switch (s) {

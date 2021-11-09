@@ -5,7 +5,7 @@
   color: rgb(43, 199, 43);
 }
 .normal {
-  color: rgb(121, 124, 121);
+  color: rgb(210, 211, 210);
 }
 .active {
   font-weight: bold;
@@ -15,12 +15,12 @@
   text-decoration: line-through;
 }
 .info {
-  color: aqua;
+  color: rgb(129, 141, 206);
 }
 .wrapitem:hover {
   background-color: rgb(231, 222, 222);
 }
 
 .suspend {
-  background-color: rgb(123, 126, 123);
+  color: rgb(141, 148, 141);
 }

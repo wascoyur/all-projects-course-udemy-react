@@ -5,7 +5,8 @@ import { SearchPanel } from "../../components/todo/SearchPanel";
 import { AppHeader } from "../../components/todo/AppHeader";
 import TodoList from "../../components/todo/TodoList";
 import Counter from "@/components/todo/Counter";
-import { Col, Row } from "react-bootstrap";
+import { Col, Form, FormGroup, Row } from "react-bootstrap";
+import AddTodo from "@/components/todo/AddTodo";
 
 const Todo = ({ todos }) => {
   const changeStatus = (id, newStatus) => {
@@ -15,6 +16,7 @@ const Todo = ({ todos }) => {
       }
       return task;
     });
+    setTasks(newArray);
     // console.log("tasks==>", newArray);
   };
   let getData = async () => {
@@ -58,19 +60,19 @@ const Todo = ({ todos }) => {
   };
 
   return (
-    <Row className="container">
-      {AppHeader}
-      <div className={styles.main}>
-        <Row>
-          <Col>
+    <div className="container">
+      <Row>{AppHeader}</Row>
+      <Row className="justify-content-md-center">
+        <Row xs lg="2">
+          <Col xs lg="3">
             <Timer />
           </Col>
           <Col>
             <Counter tasks={tasks} />
           </Col>
         </Row>
+        <Row>{SearchPanel}</Row>
 
-        {SearchPanel}
         <Row>
           <TodoList
             props={tasks}
@@ -78,8 +80,9 @@ const Todo = ({ todos }) => {
             delTask={onDeleted}
           />
         </Row>
-      </div>
-    </Row>
+        <AddTodo />
+      </Row>
+    </div>
   );
 };
 
