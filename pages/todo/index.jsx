@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/Home.module.css";
 import { Timer } from "../../components/Timer";
-import { SearchPanel } from "../../components/todo/SearchPanel";
+import SearchPanel from "../../components/todo/SearchPanel";
 import { AppHeader } from "../../components/todo/AppHeader";
 import TodoList from "../../components/todo/TodoList";
 import Counter from "@/components/todo/Counter";
@@ -18,6 +18,17 @@ const Todo = ({ todos }) => {
     });
     setTasks(newArray);
     // console.log("tasks==>", newArray);
+  };
+  const addTask = (task) => {
+    const ids = tasks
+      .map((t) => t.id)
+      .reduce((acc, n) => {
+        return n > acc ? n : acc;
+      });
+    const nextId = Math.max(ids) + 1;
+    const neTask = { id: nextId, name: "name", important: 1, status: "active" };
+    setTasks((tasks) => [...tasks, { ...neTask }]);
+    console.log("max id==>", tasks, "task:", task);
   };
   let getData = async () => {
     const data = fetch();
@@ -71,7 +82,7 @@ const Todo = ({ todos }) => {
             <Counter tasks={tasks} />
           </Col>
         </Row>
-        <Row>{SearchPanel}</Row>
+        <SearchPanel />
 
         <Row>
           <TodoList
@@ -80,7 +91,7 @@ const Todo = ({ todos }) => {
             delTask={onDeleted}
           />
         </Row>
-        <AddTodo />
+        <AddTodo addTask={addTask} />
       </Row>
     </div>
   );
