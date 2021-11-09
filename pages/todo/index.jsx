@@ -19,16 +19,21 @@ const Todo = ({ todos }) => {
     setTasks(newArray);
     // console.log("tasks==>", newArray);
   };
-  const addTask = (task) => {
+  const addTask = (task, importance) => {
     const ids = tasks
       .map((t) => t.id)
       .reduce((acc, n) => {
         return n > acc ? n : acc;
       });
     const nextId = Math.max(ids) + 1;
-    const neTask = { id: nextId, name: "name", important: 1, status: "active" };
+    const neTask = {
+      id: nextId,
+      name: task,
+      important: Number(importance),
+      status: "active",
+    };
     setTasks((tasks) => [...tasks, { ...neTask }]);
-    console.log("max id==>", tasks, "task:", task);
+    console.log("max id==>", task, "task:", task);
   };
   let getData = async () => {
     const data = fetch();
