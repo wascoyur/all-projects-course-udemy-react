@@ -7,6 +7,7 @@ const Navbar = () => {
     <div className={styles.nav}>
       <Link href="/">All Projects</Link>
       <Link href="/todo">Todo</Link>
+      <Link href="/stardb">Звездные войны</Link>
     </div>
   );
 };
