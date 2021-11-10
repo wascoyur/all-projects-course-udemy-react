@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import styles from "@/styles/Home.module.css";
 import { Timer } from "../../components/Timer";
 import SearchPanel from "../../components/todo/SearchPanel";
 import { AppHeader } from "../../components/todo/AppHeader";
