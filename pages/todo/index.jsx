@@ -40,6 +40,7 @@ const Todo = ({ todos }) => {
   ];
   const [tasks, setTasks] = useState(data);
   const [toView, setToView] = useState("");
+  const [filtered, setFiltered] = useState("");
   const changeStatus = (id, newStatus) => {
     const newArray = tasks.map((task) => {
       if (task.id === id) {
@@ -66,6 +67,14 @@ const Todo = ({ todos }) => {
     setTasks((tasks) => [...tasks, { ...neTask }]);
     console.log("max id==>", task, "task:", task);
   };
+  const changeImportanse = (id, newImportance) => {
+    const newArray = tasks.map((t) => {
+      if (t.id === id) t.important = newImportance;
+      return t;
+    });
+    console.log(id, newImportance, newArray);
+    setTasks(newArray);
+  };
   let getData = async () => {
     const data = fetch();
   };
@@ -91,8 +100,8 @@ const Todo = ({ todos }) => {
       const result = t.name.includes(qwery);
       return result;
     });
-    getChosedTasks(toView);
     console.log("fit", filtered);
+    setFiltered(filtered);
 
     return filtered;
   };
@@ -120,6 +129,7 @@ const Todo = ({ todos }) => {
             props={getChosedTasks(toView)}
             changeStatus={changeStatus}
             delTask={onDeleted}
+            changeImportanse={changeImportanse}
           />
         </Row>
         <AddTodo addTask={addTask} />

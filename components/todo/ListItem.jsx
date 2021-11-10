@@ -5,7 +5,7 @@ import StatusViewer from "./status";
 import Importance from "./Importance";
 import Task from "./Task";
 
-export const ListItem = ({ item, rmTask, changeStatus }) => {
+export const ListItem = ({ item, rmTask, changeStatus, changeImportanse }) => {
   const { id, name, important, status } = item;
 
   const importancePicker = () => {};
@@ -23,7 +23,11 @@ export const ListItem = ({ item, rmTask, changeStatus }) => {
       </Button>
 
       <StatusViewer statusTask={status} />
-      <Importance important={important} />
+      <Importance
+        important={important}
+        changeImportanse={changeImportanse}
+        id={id}
+      />
     </div>
   );
 };

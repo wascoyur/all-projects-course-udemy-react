@@ -1,21 +1,25 @@
-const { Fragment, useState } = require("react");
+const { Fragment, useState, useEffect } = require("react");
 const { Button, Badge } = require("react-bootstrap");
 import styles from "@/styles/Importance.module.css";
 import { Dropdown, DropdownProps } from "react-bootstrap";
 
-const Importance = ({ important }) => {
+const Importance = ({ important, changeImportanse, id }) => {
   const [importance, setImportance] = useState(important);
 
+  useEffect(() => {
+    setImportance(important);
+  }, [important]);
   const handleChange = (evtKey) => {
     // e.peventDefault();
-    console.log(evtKey);
+    console.log("Imp", evtKey, id);
+    changeImportanse(id, evtKey);
   };
   return (
     <Dropdown
       className="float-end"
       id="dropdown-outline"
-      /* autoClose */
-      onSelect={(e) => setImportance(e)}
+      autoClose
+      onSelect={handleChange}
     >
       <Dropdown.Toggle className="bg-light text-info" id="dropdown">
         {importance}

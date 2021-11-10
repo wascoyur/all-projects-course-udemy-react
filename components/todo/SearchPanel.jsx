@@ -5,6 +5,7 @@ const SearchPanel = ({ tasks, selector, content }) => {
   const [allTasks, setAllTasks] = useState(tasks.length);
   const [donesTask, setDonesTask] = useState(0);
   const [activeTask, setActiveTask] = useState(0);
+  const [importantTask, setImportantTask] = useState("");
   const [qwery, setQwery] = useState();
 
   const calcDoneTask = (all) => {
@@ -18,10 +19,11 @@ const SearchPanel = ({ tasks, selector, content }) => {
     setAllTasks(tasks.length);
     setDonesTask(calcDoneTask(tasks));
     setActiveTask(calcActiveTask(tasks));
+    setImportantTask(calcImportantTask(tasks));
   }, [allTasks, tasks]);
 
   const filteredContent = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     content(e.target.value);
   };
 
@@ -58,6 +60,15 @@ const SearchPanel = ({ tasks, selector, content }) => {
             Выполнены
             <Badge bg="dark" className="top-0 position-absolute ml-1">
               {donesTask}
+            </Badge>
+          </Button>
+          <Button
+            variant="outline-secondary"
+            onClick={() => selector("important")}
+          >
+            Важные
+            <Badge bg="dark" className="top-0 position-absolute ml-1">
+              {importantTask}
             </Badge>
           </Button>
         </ButtonGroup>
