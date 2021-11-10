@@ -6,7 +6,7 @@ const SearchPanel = ({ tasks, selector, content }) => {
   const [donesTask, setDonesTask] = useState(0);
   const [activeTask, setActiveTask] = useState(0);
   const [importantTask, setImportantTask] = useState("");
-  const [qwery, setQwery] = useState();
+  const [query, setQuery] = useState();
 
   const calcDoneTask = (all) => {
     return all.filter((t) => t.status === "done").length;

@@ -69,29 +69,32 @@ const Todo = ({ todos }) => {
     // console.log(getChosedTasks(toView));
   };
   const getChosedTasks = (stat = "all") => {
-    if (stat == "all") return tasks;
+    if (filtered) {
+      // console.log("filtered", filtered);
+      return filtered;
+    }
 
     if (toView === "important") {
       const highImportance = tasks.filter((t) => {
         return t.important < 2;
       });
-      console.log("highImportance", highImportance);
+      // console.log("highImportance", highImportance);
       return highImportance;
     }
-    const fitered = tasks.filter((t) => t.status == stat);
-    // console.log("filtered", fitered);
-    return fitered;
+    if (stat == "all") return tasks;
+    const fiteredByStatus = tasks.filter((t) => t.status == stat);
+    // console.log("filtered", fiteredByStatus);
+    return fiteredByStatus;
   };
-  const getFiltredContent = (qwery = "") => {
-    // const firstFilter = getChosedTasks(toView);
-    const filtered = tasks.filter((t) => {
-      const result = t.name.includes(qwery);
+  const getFiltredContent = (query) => {
+    const filteredByContent = tasks.filter((t) => {
+      const result = t.name.includes(query);
       return result;
     });
-    console.log("fit", filtered);
-    setFiltered(filtered);
+    // console.log("fit", filteredByContent);
+    setFiltered(filteredByContent);
 
-    return filtered;
+    return filteredByContent;
   };
 
   return (
