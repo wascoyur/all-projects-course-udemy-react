@@ -7,6 +7,8 @@ import TodoList from "../../components/todo/TodoList";
 import Counter from "@/components/todo/Counter";
 import { Col, Form, FormGroup, Row } from "react-bootstrap";
 import AddTodo from "@/components/todo/AddTodo";
+import { onAddTask } from "@/components/todo/functions/onAddTask.jsx";
+import { onChangeImportance } from "@/components/todo/functions/onChangeImportance.jsx";
 
 const Todo = ({ todos }) => {
   const data = [
@@ -51,30 +53,8 @@ const Todo = ({ todos }) => {
     setTasks(newArray);
     // console.log("tasks==>", newArray);
   };
-  const addTask = (task, importance) => {
-    const ids = tasks
-      .map((t) => t.id)
-      .reduce((acc, n) => {
-        return n > acc ? n : acc;
-      });
-    const nextId = Math.max(ids) + 1;
-    const neTask = {
-      id: nextId,
-      name: task,
-      important: Number(importance),
-      status: "active",
-    };
-    setTasks((tasks) => [...tasks, { ...neTask }]);
-    console.log("max id==>", task, "task:", task);
-  };
-  const changeImportanse = (id, newImportance) => {
-    const newArray = tasks.map((t) => {
-      if (t.id === id) t.important = newImportance;
-      return t;
-    });
-    console.log(id, newImportance, newArray);
-    setTasks(newArray);
-  };
+  const addTask = onAddTask(tasks, setTasks);
+  const changeImportanse = onChangeImportance(tasks, setTasks);
   let getData = async () => {
     const data = fetch();
   };
@@ -90,13 +70,21 @@ const Todo = ({ todos }) => {
   };
   const getChosedTasks = (stat = "all") => {
     if (stat == "all") return tasks;
+
+    if (toView === "important") {
+      const highImportance = tasks.filter((t) => {
+        return t.important < 2;
+      });
+      console.log("highImportance", highImportance);
+      return highImportance;
+    }
     const fitered = tasks.filter((t) => t.status == stat);
     // console.log("filtered", fitered);
     return fitered;
   };
   const getFiltredContent = (qwery = "") => {
-    const firstFilter = getChosedTasks(toView);
-    const filtered = firstFilter.filter((t) => {
+    // const firstFilter = getChosedTasks(toView);
+    const filtered = tasks.filter((t) => {
       const result = t.name.includes(qwery);
       return result;
     });
@@ -139,12 +127,3 @@ const Todo = ({ todos }) => {
 };
 
 export default Todo;
-
-// export async function getServerSideProps(context) {
-//   const res = await fetch("http://localhost:3000/api/hello");
-//   const data = res.json();
-//
-//   return {
-//     props: {}, // will be passed to the page component as props
-//   };
-// }

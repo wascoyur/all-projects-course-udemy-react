@@ -11,7 +11,7 @@ const Importance = ({ important, changeImportanse, id }) => {
   }, [important]);
   const handleChange = (evtKey) => {
     // e.peventDefault();
-    console.log("Imp", evtKey, id);
+    // console.log("Imp", evtKey, id);
     changeImportanse(id, evtKey);
   };
   return (
