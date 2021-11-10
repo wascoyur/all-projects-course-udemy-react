@@ -9,36 +9,6 @@ import { Col, Form, FormGroup, Row } from "react-bootstrap";
 import AddTodo from "@/components/todo/AddTodo";
 
 const Todo = ({ todos }) => {
-  const changeStatus = (id, newStatus) => {
-    const newArray = tasks.map((task) => {
-      if (task.id === id) {
-        task.status = newStatus;
-      }
-      return task;
-    });
-    setTasks(newArray);
-    // console.log("tasks==>", newArray);
-  };
-  const addTask = (task, importance) => {
-    const ids = tasks
-      .map((t) => t.id)
-      .reduce((acc, n) => {
-        return n > acc ? n : acc;
-      });
-    const nextId = Math.max(ids) + 1;
-    const neTask = {
-      id: nextId,
-      name: task,
-      important: Number(importance),
-      status: "active",
-    };
-    setTasks((tasks) => [...tasks, { ...neTask }]);
-    console.log("max id==>", task, "task:", task);
-  };
-  let getData = async () => {
-    const data = fetch();
-  };
-  // const data = todos.data;
   const data = [
     { id: 1, name: "Do it", important: 2, status: "active" },
     { id: 7, name: "Выучить next", important: 2, status: "active" },
@@ -69,10 +39,62 @@ const Todo = ({ todos }) => {
     },
   ];
   const [tasks, setTasks] = useState(data);
+  const [toView, setToView] = useState("");
+  const changeStatus = (id, newStatus) => {
+    const newArray = tasks.map((task) => {
+      if (task.id === id) {
+        task.status = newStatus;
+      }
+      return task;
+    });
+    setTasks(newArray);
+    // console.log("tasks==>", newArray);
+  };
+  const addTask = (task, importance) => {
+    const ids = tasks
+      .map((t) => t.id)
+      .reduce((acc, n) => {
+        return n > acc ? n : acc;
+      });
+    const nextId = Math.max(ids) + 1;
+    const neTask = {
+      id: nextId,
+      name: task,
+      important: Number(importance),
+      status: "active",
+    };
+    setTasks((tasks) => [...tasks, { ...neTask }]);
+    console.log("max id==>", task, "task:", task);
+  };
+  let getData = async () => {
+    const data = fetch();
+  };
+  // const data = todos.data;
 
   const onDeleted = (id, n) => {
     const task = tasks.filter((t) => t.id !== id);
     setTasks(task);
+  };
+  const selector = (choose) => {
+    setToView(choose);
+    // console.log(getChosedTasks(toView));
+  };
+  const getChosedTasks = (stat = "all") => {
+    if (stat == "all") return tasks;
+    const fitered = tasks.filter((t) => t.status == stat);
+    // console.log("filtered", fitered);
+    return fitered;
+  };
+  const getFiltredContent = (qwery = "") => {
+    const firstFilter = getChosedTasks(toView);
+    const filtered = firstFilter.filter((t) => {
+      const result = t.name.includes(qwery);
+      return result;
+    });
+    getChosedTasks(toView);
+    console.log("fit", filtered);
+
+    return filtered;
   };
 
   return (
@@ -87,11 +109,15 @@ const Todo = ({ todos }) => {
             <Counter tasks={tasks} />
           </Col>
         </Row>
-        <SearchPanel tasks={tasks} />
+        <SearchPanel
+          tasks={tasks}
+          selector={selector}
+          content={getFiltredContent}
+        />
 
         <Row className="m-2">
           <TodoList
-            props={tasks}
+            props={getChosedTasks(toView)}
             changeStatus={changeStatus}
             delTask={onDeleted}
           />

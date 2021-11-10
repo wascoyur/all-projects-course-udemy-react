@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Row, Button, ButtonGroup, Badge } from "react-bootstrap";
 
-const SearchPanel = ({ tasks }) => {
+const SearchPanel = ({ tasks, selector, content }) => {
   const [allTasks, setAllTasks] = useState(tasks.length);
   const [donesTask, setDonesTask] = useState(0);
   const [activeTask, setActiveTask] = useState(0);
+  const [qwery, setQwery] = useState();
 
   const calcDoneTask = (all) => {
     return all.filter((t) => t.status === "done").length;
@@ -19,6 +20,11 @@ const SearchPanel = ({ tasks }) => {
     setActiveTask(calcActiveTask(tasks));
   }, [allTasks, tasks]);
 
+  const filteredContent = (e) => {
+    console.log(e.target.value);
+    content(e.target.value);
+  };
+
   return (
     <Row>
       <Row className="p-3">
@@ -26,23 +32,29 @@ const SearchPanel = ({ tasks }) => {
           placeholder="введи чего-нибудь"
           className="form-control"
           aria-label="Basic outlined example"
+          onChange={(e) => {
+            filteredContent(e);
+          }}
         />
       </Row>
       <Row>
         <ButtonGroup className="m-2 p-2">
-          <Button variant="outline-secondary">
+          <Button variant="outline-secondary" onClick={() => selector()}>
             Все
             <Badge bg="secondary" className="top-0 position-absolute ml-1">
               {allTasks}
             </Badge>
           </Button>
-          <Button variant="outline-secondary">
+          <Button
+            variant="outline-secondary"
+            onClick={() => selector("active")}
+          >
             Активные
             <Badge bg="primary" className="top-0 position-absolute ml-1">
               {activeTask}
             </Badge>
           </Button>
-          <Button variant="outline-secondary">
+          <Button variant="outline-secondary" onClick={() => selector("done")}>
             Выполнены
             <Badge bg="dark" className="top-0 position-absolute ml-1">
               {donesTask}
