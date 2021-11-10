@@ -1,0 +1,24 @@
+{
+  "data": [
+    { "id": 1, "name": "Выучить реакт", "important": 2, "status": "active" },
+    { "id": 2, "name": "Получить оффер", "important": 1, "status": "suspend" },
+    {
+      "id": 3,
+      "name": "Cредней важности пункт списка",
+      "important": 2,
+      "status": "done"
+    },
+    {
+      "id": 4,
+      "name": "Важный элемент списка",
+      "important": 1,
+      "status": "info"
+    },
+    {
+      "id": 5,
+      "name": "Элемент обычной важности",
+      "important": 3,
+      "status": "info"
+    }
+  ]
+}

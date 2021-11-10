@@ -1,0 +1,26 @@
+.high {
+  color: rgb(243, 8, 8);
+}
+.medium {
+  color: rgb(43, 199, 43);
+}
+.normal {
+  color: rgb(210, 211, 210);
+}
+.active {
+  font-weight: bold;
+  color: steelblue;
+}
+.done {
+  text-decoration: line-through;
+}
+.info {
+  color: rgb(129, 141, 206);
+}
+.wrapitem:hover {
+  background-color: rgb(231, 222, 222);
+}
+
+.suspend {
+  color: rgb(141, 148, 141);
+}
