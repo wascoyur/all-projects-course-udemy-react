@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Timer } from "../../components/Timer";
+import Head from "next/head";
+import { Timer } from "../../components/todo/Timer.jsx";
 import SearchPanel from "../../components/todo/SearchPanel";
 import { AppHeader } from "../../components/todo/AppHeader";
 import TodoList from "../../components/todo/TodoList";
@@ -98,6 +99,14 @@ const Todo = ({ todos }) => {
 
   return (
     <div className="container">
+      <Head>
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+          crossOrigin="anonymous"
+        />
+      </Head>
       <Row className="m-2">{AppHeader}</Row>
       <Row className="m-2">
         <Row xs lg="2">
