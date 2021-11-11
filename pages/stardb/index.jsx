@@ -1,6 +1,11 @@
 import Head from "next/head";
 import React, { Fragment, useEffect, useState } from "react";
 import { getPerson, getAllPersons } from "@/components/stardb/swapi";
+import RandomPlanet from "@/components/stardb/jambo/RandomPlanet";
+import { Card } from "react-bootstrap";
+import PrjNavbar from "@/components/stardb/NavbarProject/PrjNavbar";
+import ItemList from "@/components/stardb/view/ItemList";
+import ItemDetailed from "@/components/stardb/view/ItemDetailed";
 
 const StarDB = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -31,9 +36,14 @@ const StarDB = () => {
 
         <title>Звездные войны</title>
       </Head>
-      <div className="container"></div>
-      <h1 className="text-center">Звездные войны</h1>
-      {isLoading ? <center>..isLoading..</center> : JSON.stringify(data)}
+      <div className="container">
+        <PrjNavbar></PrjNavbar>
+        <RandomPlanet />
+        <div className="row">
+          <ItemList />
+          <ItemDetailed />
+        </div>
+      </div>
     </Fragment>
   );
 };

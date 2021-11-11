@@ -1,4 +1,3 @@
-import Head from "next/head";
 import React, { Fragment } from "react";
 import Navbar from "./nav/Navbar";
 
