@@ -3,7 +3,7 @@ import styles from "@/styles/stardb/ItemList.module.css";
 
 const ItemList = () => {
   return (
-    <div className="col-6">
+    <div className="col">
       <ul className="list-group">
         <li className={(styles.li, "list-group-item")}>
           dsaffdfgdgfdgfdgtttttttttttttttdf

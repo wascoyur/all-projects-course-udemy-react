@@ -1,6 +1,11 @@
 import Head from "next/head";
 import React, { Fragment, useEffect, useState } from "react";
-import { getPerson, getAllPersons } from "@/components/stardb/swapi";
+import {
+  getPerson,
+  getAllPersons,
+  getPlanet,
+  getAllPlanets,
+} from "@/components/stardb/swapi";
 import RandomPlanet from "@/components/stardb/jambo/RandomPlanet";
 import { Card } from "react-bootstrap";
 import PrjNavbar from "@/components/stardb/NavbarProject/PrjNavbar";
@@ -38,8 +43,11 @@ const StarDB = () => {
       </Head>
       <div className="container">
         <PrjNavbar></PrjNavbar>
-        <RandomPlanet />
-        <div className="row">
+        {/* <div> */}
+        <RandomPlanet getPlanet={getPlanet} getAllPlanets={getAllPlanets} />
+        {/* </div> */}
+
+        <div className="row py-2">
           <ItemList />
           <ItemDetailed />
         </div>
