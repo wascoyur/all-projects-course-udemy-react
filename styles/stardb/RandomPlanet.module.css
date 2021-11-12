@@ -1,0 +1,18 @@
+.gridcontainer {
+  display: grid;
+  justify-items: center;
+  padding: 1rem;
+  background-color: rgba(20, 17, 17, 0.521);
+  color: white;
+  border-radius: 15px;
+  margin: 0 1rem 0 1rem;
+}
+.title {
+  display: grid;
+  justify-items: center;
+  margin-right: 1rem;
+}
+.detail {
+  display: grid;
+  grid-template-columns: 1fr;
+}

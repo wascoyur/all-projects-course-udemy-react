@@ -7,7 +7,7 @@ import {
   getAllPlanets,
 } from "@/components/stardb/swapi";
 import RandomPlanet from "@/components/stardb/jambo/RandomPlanet";
-import { Card } from "react-bootstrap";
+import styles from "@/styles/stardb/index.module.css";
 import PrjNavbar from "@/components/stardb/NavbarProject/PrjNavbar";
 import ItemList from "@/components/stardb/view/ItemList";
 import ItemDetailed from "@/components/stardb/view/ItemDetailed";
@@ -41,7 +41,7 @@ const StarDB = () => {
 
         <title>Звездные войны</title>
       </Head>
-      <div className="container">
+      <div className={("container", styles.body)}>
         <PrjNavbar></PrjNavbar>
         {/* <div> */}
         <RandomPlanet getPlanet={getPlanet} getAllPlanets={getAllPlanets} />
