@@ -1,9 +1,10 @@
 import React from "react";
+import { Row } from "react-bootstrap";
 
 const PrjNavbar = () => {
   return (
     <nav className="header">
-      <div>
+      <Row>
         <div className="btn btn-outline" href="/stardb">
           Звездные войны
         </div>
@@ -13,7 +14,7 @@ const PrjNavbar = () => {
 
           <li className="btn border text-info">Корабли</li>
         </ul>
-      </div>
+      </Row>
     </nav>
   );
 };

@@ -12,7 +12,7 @@ const RandomPlanet = ({ getPlanet, getAllPlanets }) => {
   useEffect(() => {
     indexRandomPlanet()
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         return getRandomPlanet(res);
       })
       .then((res) => {
