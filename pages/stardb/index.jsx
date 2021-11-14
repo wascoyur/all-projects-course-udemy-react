@@ -11,15 +11,17 @@ import styles from "@/styles/stardb/index.module.css";
 import PrjNavbar from "@/components/stardb/NavbarProject/PrjNavbar";
 import ItemList from "@/components/stardb/view/ItemList";
 import ItemDetailed from "@/components/stardb/view/ItemDetailed";
+import Loader from "@/components/Loader";
 
 const StarDB = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState();
+  const [persons, setPersons] = useState();
+  const [current, setCurrent] = useState("");
 
   useEffect(() => {
     setIsLoading(true);
-    getPerson(2).then((data) => {
-      setData(data);
+    getAllPersons().then((data) => {
+      setPersons(data);
       setIsLoading(false);
     });
   }, []);
@@ -47,8 +49,9 @@ const StarDB = () => {
         <RandomPlanet getPlanet={getPlanet} getAllPlanets={getAllPlanets} />
         {/* </div> */}
 
-        <div className="row py-2">
-          <ItemList />
+        <div className="row m-0 p-0">
+          {isLoading ? <Loader /> : <ItemList persons={persons.results} />}
+
           <ItemDetailed />
         </div>
       </div>

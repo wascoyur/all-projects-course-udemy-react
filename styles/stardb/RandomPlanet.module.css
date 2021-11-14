@@ -5,7 +5,7 @@
   background-color: rgba(20, 17, 17, 0.521);
   color: white;
   border-radius: 15px;
-  margin: 0 1rem 0 1rem;
+  margin: 0 0 0.5rem 0;
 }
 .title {
   display: grid;
@@ -21,10 +21,10 @@
   .gridcontainer {
     display: flex;
     justify-items: center;
-    padding: 1rem;
+    /* padding: 1rem; */
     background-color: rgba(20, 17, 17, 0.521);
     color: white;
     border-radius: 15px;
-    margin: 0 1rem 0 1rem;
+    /* margin: 0 1rem 0 1rem; */
   }
 }

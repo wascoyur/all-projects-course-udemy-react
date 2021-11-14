@@ -1,18 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/stardb/ItemList.module.css";
 
-const ItemList = () => {
-  
-  
+const ItemList = ({ persons }) => {
+  const [listPersons, setPersons] = useState(persons);
+  useEffect(() => {
+    setPersons(persons);
+  }, [persons]);
+
+  const handleItem = (e) => {
+    const id = e.url.match(/\/(\d+)\/$/i)[1];
+    console.log(id);
+  };
   return (
-    <div className="col">
-      <ul className="list-group">
-        <li className={(styles.li, "list-group-item")}>
-          dsaffdfgdgfdgfdgtttttttttttttttdf
-        </li>
-        <li className="list-group-item">dsadf</li>
-        <li className="list-group-item">dsadf</li>
-        <li className="list-group-item">dsadf</li>
+    <div className="col rounded bg-secondary">
+      <ul className="list-group ">
+        {persons && persons.length > 0 ? (
+          persons.map((p) => (
+            <li
+              className={(styles.li, "list-group-item bg-secondary text-white")}
+              key={p.name}
+              onClick={() => handleItem(p)}
+            >
+              {p.name}
+            </li>
+          ))
+        ) : (
+          <div>..Loading</div>
+        )}
       </ul>
     </div>
   );

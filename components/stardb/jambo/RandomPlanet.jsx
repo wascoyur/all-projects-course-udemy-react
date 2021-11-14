@@ -2,9 +2,10 @@ import React, { Fragment, useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "@/styles/stardb/RandomPlanet.module.css";
 import { updatePlanet } from "./updatePlanet";
+import Loader from "@/components/Loader";
 
-const RandomPlanet = ({ getPlanet, getAllPlanets }) => {
-  const [imgIndex, setImgIndex] = useState("/default-event.png");
+const RandomPlanet = () => {
+  const [imgIndex, setImgIndex] = useState();
   const [population, setPopulation] = useState("");
   const [rotation, setRotation] = useState("");
   const [gravity, setGravity] = useState("");
@@ -30,14 +31,18 @@ const RandomPlanet = ({ getPlanet, getAllPlanets }) => {
       <div className={styles.title}>
         <h2>Планета {name}</h2>
         <div>
-          <Image
-            src={imgIndex}
-            // layout="responsive"
-            alt=""
-            width="150"
-            height="150"
-            className="rounded"
-          ></Image>
+          {imgIndex ? (
+            <Image
+              src={imgIndex}
+              // layout="responsive"
+              alt=""
+              width="150"
+              height="150"
+              className="rounded"
+            ></Image>
+          ) : (
+            <Loader />
+          )}
         </div>
       </div>
       <div className={styles.detail}>
