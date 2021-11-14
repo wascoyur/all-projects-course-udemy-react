@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "@/styles/stardb/RandomPlanet.module.css";
+import { indexRandomPlanet, getImgPath, getRandomPlanet } from "../swapi";
 
 const RandomPlanet = ({ getPlanet, getAllPlanets }) => {
   const [imgIndex, setImgIndex] = useState(2);
@@ -13,6 +14,7 @@ const RandomPlanet = ({ getPlanet, getAllPlanets }) => {
     indexRandomPlanet()
       .then((res) => {
         // console.log(res);
+        setImgIndex(res);
         return getRandomPlanet(res);
       })
       .then((res) => {
@@ -53,21 +55,5 @@ const RandomPlanet = ({ getPlanet, getAllPlanets }) => {
       </div>
     </div>
   );
-  async function indexRandomPlanet() {
-    const countPlanets = (await getAllPlanets()).count;
-    const randomPlanetIndex = Math.floor(Math.random() * (19 - 1) + 1);
-    setImgIndex(randomPlanetIndex);
-    // console.log(randomPlanetIndex);
-    return randomPlanetIndex;
-  }
-  async function getRandomPlanet(id) {
-    return await getPlanet(id);
-  }
 };
-function getImgPath(id) {
-  if (id > 19) {
-    return "/event-default.png";
-  }
-  return `https://starwars-visualguide.com/assets/img/planets/${id}.jpg`;
-}
 export default RandomPlanet;
