@@ -40,7 +40,8 @@ export const getImage = async (id) => {
     .catch((err) => console.log("err"));
   return res;
 };
-export async function indexRandomPlanet() {
+export async function indexRandomPlanet(id) {
+  if (id !== 0) return id;
   const randomPlanetIndex = Math.floor(Math.random() * (19 - 1) + 1);
   // console.log(randomPlanetIndex);
   return randomPlanetIndex;
@@ -49,7 +50,7 @@ export async function getRandomPlanet(id) {
   return await getPlanet(id);
 }
 export function getImgPath(id) {
-  if (id > 19) {
+  if (id > 19 || id < 1) {
     return "/event-default.png";
   }
   return `https://starwars-visualguide.com/assets/img/planets/${id}.jpg`;
