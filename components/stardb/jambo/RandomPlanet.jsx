@@ -18,7 +18,7 @@ const RandomPlanet = ({ getPlanet, getAllPlanets }) => {
         return getRandomPlanet(res);
       })
       .then((res) => {
-        // console.log("effect", res);
+        console.log("effect", res);
         setName(res.name);
         setPopulation(res.population);
         setRotation(res.period);

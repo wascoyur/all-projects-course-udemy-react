@@ -57,13 +57,10 @@ export function getImgPath(id) {
 const getInnerPlanetModel = (planetApi) => {
   const gravity = planetApi.gravity.split(" ")[0].concat(" от земной");
   const period = Number(planetApi.orbital_period);
+
   const population = () => {
-    try {
-      return Number(planetApi.population);
-    } catch (error) {
-      return "Неизвестно";
-    }
-    return;
+    const pop = parseFloat(Number(planetApi.population));
+    return isNaN(pop) ? "Неизвестно" : pop;
   };
   return {
     name: planetApi.name,
