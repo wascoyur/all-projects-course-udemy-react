@@ -18,14 +18,11 @@ const RandomPlanet = ({ getPlanet, getAllPlanets }) => {
         return getRandomPlanet(res);
       })
       .then((res) => {
+        // console.log("effect", res);
         setName(res.name);
         setPopulation(res.population);
-        setRotation(res.orbital_period);
-        if (res.gravity === "unknown") {
-          setGravity("неизвестно");
-        } else {
-          setGravity(res.gravity);
-        }
+        setRotation(res.period);
+        setGravity(res.gravity);
       });
   }, []);
   return (

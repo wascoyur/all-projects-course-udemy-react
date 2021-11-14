@@ -21,7 +21,11 @@ export const getPlanet = async (id = "") => {
     .then((response) => response.json())
     .catch((err) => console.log("err"));
 
-  return res;
+  const innerModel = (res) => {
+    // console.log("getInnerPlanetModel==>", getInnerPlanetModel(res));
+    getInnerPlanetModel(res);
+  };
+  return getInnerPlanetModel(res);
 };
 
 export const getAllPlanets = async () => {
@@ -38,7 +42,6 @@ export const getImage = async (id) => {
 };
 export async function indexRandomPlanet() {
   const randomPlanetIndex = Math.floor(Math.random() * (19 - 1) + 1);
-  ;
   // console.log(randomPlanetIndex);
   return randomPlanetIndex;
 }
@@ -51,3 +54,21 @@ export function getImgPath(id) {
   }
   return `https://starwars-visualguide.com/assets/img/planets/${id}.jpg`;
 }
+const getInnerPlanetModel = (planetApi) => {
+  const gravity = planetApi.gravity.split(" ")[0].concat(" от земной");
+  const period = Number(planetApi.orbital_period);
+  const population = () => {
+    try {
+      return Number(planetApi.population);
+    } catch (error) {
+      return "Неизвестно";
+    }
+    return;
+  };
+  return {
+    name: planetApi.name,
+    gravity: gravity,
+    period: period,
+    population: population(),
+  };
+};
