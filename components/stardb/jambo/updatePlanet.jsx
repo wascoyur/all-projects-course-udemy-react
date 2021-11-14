@@ -9,7 +9,7 @@ export async function updatePlanet(idPlanet = 0) {
     .then((r) => {
       const imgPath = getImgPath(idPlanet);
       r = { ...r, imgPath };
-      console.log(r);
+      //   console.log(r);
       return r;
     });
 }

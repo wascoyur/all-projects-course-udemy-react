@@ -13,14 +13,14 @@ const RandomPlanet = ({ getPlanet, getAllPlanets }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       updatePlanet().then((res) => {
-        console.log("res eff", res);
+        // console.log("res eff", res);
         setImgIndex(res.imgPath);
         setName(res.name);
         setPopulation(res.population);
         setRotation(res.period);
         setGravity(res.gravity);
       });
-    }, 3000);
+    }, 30000);
     return () => {
       clearInterval(interval);
     };
