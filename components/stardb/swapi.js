@@ -55,6 +55,10 @@ export function getImgPath(id) {
   }
   return `https://starwars-visualguide.com/assets/img/planets/${id}.jpg`;
 }
+export async function getShips(id = "") {
+  const res = await fetch(`${URL}/starships/${id}`).then((res) => res.json());
+  return res;
+}
 const getInnerPlanetModel = (planetApi) => {
   const gravity = planetApi.gravity.split(" ")[0].concat(" от земной");
   const period = Number(planetApi.orbital_period);
