@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/stardb/ItemList.module.css";
+import { getIdByUrl } from "../functions";
 
-const ItemList = ({ persons }) => {
+const ItemList = ({ persons, setActiveById }) => {
   const [listPersons, setPersons] = useState(persons);
   useEffect(() => {
     setPersons(persons);
   }, [persons]);
 
   const handleItem = (e) => {
-    const id = e.url.match(/\/(\d+)\/$/i)[1];
-    console.log(id);
+    const id = getIdByUrl(e.url);
+    setActiveById(id);
+    // console.log(id);
   };
   return (
     <div className="col rounded bg-secondary">
