@@ -5,6 +5,7 @@ import {
   getAllPersons,
   getPlanet,
   getAllPlanets,
+  getShips,
 } from "@/components/stardb/swapi";
 import RandomPlanet from "@/components/stardb/jambo/RandomPlanet";
 import styles from "@/styles/stardb/index.module.css";
@@ -16,7 +17,9 @@ import Loader from "@/components/Loader";
 const StarDB = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [persons, setPersons] = useState();
-  const [current, setCurrent] = useState("");
+  const [activeIdItem, setActiveIdItem] = useState("");
+  const [planets, setPlanets] = useState("");
+  const [ships, setShips] = useState("");
 
   useEffect(() => {
     setIsLoading(true);
@@ -24,6 +27,8 @@ const StarDB = () => {
       setPersons(data);
       setIsLoading(false);
     });
+    getAllPlanets().then((res) => setPlanets(res));
+    getShips().then((res) => setShips(res));
   }, []);
 
   return (
@@ -46,7 +51,7 @@ const StarDB = () => {
       <div className={("container", styles.body)}>
         <PrjNavbar></PrjNavbar>
         {/* <div> */}
-        <RandomPlanet getPlanet={getPlanet} getAllPlanets={getAllPlanets} />
+        <RandomPlanet planets={planets} />
         {/* </div> */}
 
         <div className="row m-0 p-0">
