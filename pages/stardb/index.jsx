@@ -13,11 +13,13 @@ import PrjNavbar from "@/components/stardb/NavbarProject/PrjNavbar";
 import ItemList from "@/components/stardb/view/ItemList";
 import ItemDetailed from "@/components/stardb/view/ItemDetailed";
 import Loader from "@/components/Loader";
+import { getActiveItem } from "@/components/stardb/functions";
 
 const StarDB = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [persons, setPersons] = useState();
-  const [activeIdItem, setActiveIdItem] = useState("");
+  const [activeIdItem, setActiveIdItem] = useState(0);
+  const [activeItem, setActiveItem] = useState("");
   const [planets, setPlanets] = useState("");
   const [ships, setShips] = useState("");
 
@@ -31,6 +33,14 @@ const StarDB = () => {
     getShips().then((res) => setShips(res));
   }, []);
 
+  useEffect(() => {
+    // if(persons.)
+    // setActiveItem(getActiveItem(activeIdItem, persons.results));
+  }, [activeIdItem, persons]);
+
+  const setActiveById = (id) => {
+    setActiveIdItem(id);
+  };
   return (
     <Fragment>
       <Head>
@@ -48,16 +58,30 @@ const StarDB = () => {
 
         <title>Звездные войны</title>
       </Head>
-      <div className={("container", styles.body)}>
+      <div className={("container ", styles.body)}>
         <PrjNavbar></PrjNavbar>
         {/* <div> */}
         <RandomPlanet planets={planets} />
         {/* </div> */}
 
         <div className="row m-0 p-0">
-          {isLoading ? <Loader /> : <ItemList persons={persons.results} />}
-
-          <ItemDetailed />
+          <div className="col">
+            {isLoading ? (
+              <Loader />
+            ) : (
+              <ItemList
+                persons={persons.results}
+                setActiveById={setActiveById}
+              />
+            )}
+          </div>
+          <div className="col rounded">
+            {isLoading ? (
+              <Loader />
+            ) : (
+              <ItemDetailed activeIdItem={activeIdItem} persons={persons} />
+            )}
+          </div>
         </div>
       </div>
     </Fragment>
