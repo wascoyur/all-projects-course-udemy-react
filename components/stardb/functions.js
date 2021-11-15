@@ -6,9 +6,14 @@ import {
 } from "./swapi";
 
 export const getActiveItem = (id, list) => {
+  if (id < 1 || list.length < 1) {
+    return { "неверные входные параметры": { id, list } };
+  }
   const activeItem = list.filter((p) => {
-    return p.id === id;
+    return getIdByUrl(p.url) == id;
   });
+  console.log("activeItem", activeItem);
+
   return activeItem[0];
 };
 export const getIdByUrl = (url) => {
@@ -33,4 +38,15 @@ export function getRandomIndex(min, max) {
   const randomIndex = Math.floor(Math.random() * `${max - min}`);
   //   console.log("randomIndex", randomIndex);
   return randomIndex;
+}
+export function transformGender(gender) {
+  switch (gender) {
+    case "male":
+      return "мужской";
+    case "female":
+      return "женский";
+
+    default:
+      return "Не определен";
+  }
 }
