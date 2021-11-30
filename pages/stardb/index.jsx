@@ -65,7 +65,7 @@ const StarDB = () => {
         {/* </div> */}
 
         <div className="row m-0 p-0">
-          <div className="col">
+          <div className="col my-0 py-0">
             {isLoading ? (
               <Loader />
             ) : (
@@ -75,7 +75,7 @@ const StarDB = () => {
               />
             )}
           </div>
-          <div className="col rounded">
+          <div className="col rounded my-0 py-0">
             {isLoading ? (
               <Loader />
             ) : (

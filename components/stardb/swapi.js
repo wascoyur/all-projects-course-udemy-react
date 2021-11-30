@@ -40,6 +40,13 @@ export const getImage = async (id) => {
     .catch((err) => console.log("err"));
   return res;
 };
+export function getImgPath(id, type = "planets") {
+  const host = "https://starwars-visualguide.com/assets/img";
+  if (id > 19 || id < 1) {
+    return "/event-default.png";
+  }
+  return `${host}/${type}/${id}.jpg`;
+}
 export async function indexRandomPlanet(id) {
   if (id !== 0) return id;
   const randomPlanetIndex = Math.floor(Math.random() * (19 - 1) + 1);
@@ -48,12 +55,6 @@ export async function indexRandomPlanet(id) {
 }
 export async function getRandomPlanet(id) {
   return await getPlanet(id);
-}
-export function getImgPath(id) {
-  if (id > 19 || id < 1) {
-    return "/event-default.png";
-  }
-  return `https://starwars-visualguide.com/assets/img/planets/${id}.jpg`;
 }
 export async function getShips(id = "") {
   const res = await fetch(`${URL}/starships/${id}`).then((res) => res.json());
