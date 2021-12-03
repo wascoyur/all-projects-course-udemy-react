@@ -8,6 +8,7 @@ const Navbar = () => {
       <Link href="/">All Projects</Link>
       <Link href="/todo">Todo</Link>
       <Link href="/stardb">Звездные войны</Link>
+      <Link href="/redux">Redux</Link>
     </div>
   );
 };
